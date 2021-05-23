@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Title: PermissionDTO
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/30 11:22
  */

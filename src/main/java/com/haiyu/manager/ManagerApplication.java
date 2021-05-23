@@ -8,7 +8,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = "com.haiyu.manager.dao")
 public class ManagerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ManagerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ManagerApplication.class, args);
+    }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @Title: PermissionService
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/30 9:44
  */
@@ -23,7 +23,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 9:48
      */
     Map<String,Object> addPermission(BaseAdminPermission permission);
@@ -34,7 +34,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 9:48
      */
     Map<String,Object> updatePermission(BaseAdminPermission permission);
@@ -45,7 +45,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 11:35
      */
     PageDataResult getPermissionList(Integer pageNum, Integer pageSize);
@@ -56,7 +56,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 11:36
      */
     List<PermissionDTO> parentPermissionList();
@@ -67,7 +67,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 12:04
      */
     Map<String, Object> del(long id);
@@ -78,7 +78,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/12/4 13:51
      */
     BaseAdminPermission getById(Object id);
@@ -90,7 +90,7 @@ public interface AdminPermissionService {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/12/4 13:51
      */
     Map<String, Object> getUserPerms(BaseAdminUser user);

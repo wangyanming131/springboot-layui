@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * @Title: ShiroConfig
  * @Description: shiro配置
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/9/11 10:33
  */
@@ -182,7 +182,7 @@ public class ShiroConfig {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/23 10:22
      */
     public KickoutSessionFilter kickoutSessionFilter(){
@@ -231,7 +231,7 @@ public class ShiroConfig {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/23 10:31
      */
     @Bean
@@ -261,7 +261,7 @@ public class ShiroConfig {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/23 10:34
      */
     @Bean

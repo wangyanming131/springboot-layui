@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @Title: AdminRoleDTO
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/12/3 18:51
  */

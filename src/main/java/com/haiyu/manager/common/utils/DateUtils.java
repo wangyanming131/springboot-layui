@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * @Title: DateUtils
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/5/26 9:58
  */
@@ -21,7 +21,7 @@ public class DateUtils {
      *
      * @param: 获取当前系统时间 yyyy-MM-dd HH:mm:ss
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/5/26 9:59
      */
     public static String getCurrentDate(){
@@ -37,7 +37,7 @@ public class DateUtils {
      *
      * @param: date类 获取当前系统时间 yyyy-MM-dd HH:mm:ss
      * @return: 
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/5/26 10:39
      */
     public static Date getCurrentDateToDate () {

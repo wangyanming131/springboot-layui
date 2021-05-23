@@ -5,7 +5,7 @@ package com.haiyu.manager.dto;
 /**
  * @Title: AdminUserDTO
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/12/3 12:13
  */

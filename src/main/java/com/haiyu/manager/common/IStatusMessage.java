@@ -3,7 +3,7 @@ package com.haiyu.manager.common;
 /**
  * @Title: IStatusMessage
  * @Description: 响应状态信息
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/23 9:50
  */

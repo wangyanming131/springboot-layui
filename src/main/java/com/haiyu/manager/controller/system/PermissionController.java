@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * @Title: PermissionController
  * @Description: 权限管理
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/29 18:16
  */
@@ -39,7 +39,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 9:22
      */
     @RequestMapping("permissionManage")
@@ -55,7 +55,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 10:30
      */
     @PostMapping("permissionList")
@@ -89,7 +89,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 11:35
      */
     @GetMapping("parentPermissionList")
@@ -108,7 +108,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 9:42
      */
     @PostMapping("setPermission")
@@ -132,7 +132,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/30 12:02
      */
     @PostMapping("del")
@@ -153,7 +153,7 @@ public class PermissionController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/12/4 9:48
      */
     @GetMapping("getUserPerms")

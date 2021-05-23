@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @Title: RoleController
  * @Description: 角色管理
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/21 13:43
  */
@@ -45,7 +45,7 @@ public class RoleController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/21 14:29
      */
     @RequestMapping(value = "/getRoleList", method = RequestMethod.GET)
@@ -78,7 +78,7 @@ public class RoleController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/12/3 13:22
      */
     @GetMapping("getRoles")
@@ -94,7 +94,7 @@ public class RoleController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/12/3 10:54
      */
     @PostMapping("setRole")
@@ -119,7 +119,7 @@ public class RoleController {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/21 16:00
      */
     @PostMapping("updateRoleStatus")

@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 /**
  * @Title: ShiroFilterUtils
  * @Description:  shiro工具类
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/23 9:54
  */
@@ -29,7 +29,7 @@ public class ShiroFilterUtils {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/23 9:57
      */
     public static boolean isAjax(ServletRequest request){
@@ -48,7 +48,7 @@ public class ShiroFilterUtils {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/11/23 9:58
      */
     public static void out(HttpServletResponse response, ResponseResult result){

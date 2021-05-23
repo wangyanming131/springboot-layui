@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * @Title: LoginController
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/20 11:39
  */
@@ -20,19 +20,19 @@ public class IndexController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("login")
-    public String tologin(){
+    public String toLogin() {
         logger.info("定向登陆页");
         return "login";
     }
 
     @RequestMapping("home")
-    public String home(){
+    public String home() {
         logger.info("定向主页");
         return "home";
     }
 
     @RequestMapping("logout")
-    public String logout(){
+    public String logout() {
         logger.info("退出系统");
         Subject subject = SecurityUtils.getSubject();
         subject.logout(); // shiro底层删除session的会话信息

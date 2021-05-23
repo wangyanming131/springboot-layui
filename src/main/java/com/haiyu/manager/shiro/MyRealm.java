@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @Title: MyRealm
  * @Description:
- * @author: youqing
+ * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/22 15:53
  */
@@ -44,7 +44,7 @@ public class MyRealm extends AuthorizingRealm {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/9/11 10:30
      */
     @Override
@@ -89,7 +89,7 @@ public class MyRealm extends AuthorizingRealm {
      *
      * @param:
      * @return:
-     * @auther: youqing
+     * @auther: ChenXue
      * @date: 2018/9/11 10:32
      */
     @Override
