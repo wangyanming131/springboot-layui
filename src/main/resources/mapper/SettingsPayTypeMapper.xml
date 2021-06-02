@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.SettingsPayTypeMapper">
+    <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.SettingsPayType">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="type_code" jdbcType="VARCHAR" property="typeCode"/>
+        <result column="type_name" jdbcType="VARCHAR" property="typeName"/>
+        <result column="created_time" jdbcType="VARCHAR" property="createdTime"/>
+        <result column="updated_time" jdbcType="VARCHAR" property="updatedTime"/>
+        <result column="type_status" jdbcType="INTEGER" property="typeStatus"/>
+    </resultMap>
+
+
+    <sql id="baseColumn">
+    id,type_code,type_name,created_time,updated_time,type_status
+    </sql>
+
+    <select id="findByPayTypeName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM settings_pay_type
+        WHERE type_name = #{typeName}
+        and type_status = 1
+    </select>
+
+    <select id="getPayTypeList" resultType="com.haiyu.manager.dto.PayTypeDTO">
+        SELECT id, type_code AS typeCode, type_name AS typeName, created_time AS createdTime,
+        updated_time AS updatedTime, type_status AS typeStatus
+        FROM settings_pay_type as u
+        <where>
+            <if test="typeName != null and typeName != '' ">
+                and type_name LIKE '%' #{typeName} '%'
+            </if>
+            <if test="typeStatus != null and typeStatus != '' ">
+                and type_status = #{typeStatus}
+            </if>
+            <if test="startTime != null and startTime != '' ">
+                and created_time &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                and created_time &lt; #{endTime}
+            </if>
+        </where>
+    </select>
+
+</mapper>
