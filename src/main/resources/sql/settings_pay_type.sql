@@ -24,10 +24,10 @@ DROP TABLE IF EXISTS `settings_pay_type`;
 CREATE TABLE `settings_pay_type`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `type_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '支付方式代码',
-  `type_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '支付方式中文名称',
-  `created_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建时间',
-  `updated_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '修改时间',
-  `type_status` int(1) NOT NULL DEFAULT 0 COMMENT '状态(0:无效;1:有效)',
+  `type_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL  NULL COMMENT '支付方式中文名称',
+  `created_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '创建时间',
+  `updated_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '修改时间',
+  `type_status` int(1) DEFAULT 0 COMMENT '状态(0:无效;1:有效)',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '支付方式表' ROW_FORMAT = Dynamic;
 

@@ -32,7 +32,7 @@
         FROM settings_pay_type as u
         <where>
             <if test="typeName != null and typeName != '' ">
-                and type_name LIKE '%' #{typeName} '%'
+                and type_name LIKE concat ('%', #{typeName},'%')
             </if>
             <if test="typeStatus != null and typeStatus != '' ">
                 and type_status = #{typeStatus}
@@ -45,5 +45,28 @@
             </if>
         </where>
     </select>
+
+
+    <update id="updatePayType">
+        UPDATE settings_pay_type
+        <set>
+            <if test="typeName != null">
+                type_name = #{typeName},
+            </if>
+            <if test="typeStatus != null">
+                type_status = #{typeStatus},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updatePayTypeStatus">
+    UPDATE settings_pay_type
+    SET type_status = #{typeStatus}
+    WHERE id = #{id}
+  </update>
 
 </mapper>

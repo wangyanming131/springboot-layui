@@ -17,5 +17,8 @@ public interface SettingsPayTypeMapper extends MyMapper<SettingsPayType> {
 
     SettingsPayType findByPayTypeName(@Param("typeName") String typeName);
 
+    int updatePayType(SettingsPayType pojo);
+
+    int updatePayTypeStatus(@Param("id") Integer id, @Param("typeStatus") Integer typeStatus);
 
 }

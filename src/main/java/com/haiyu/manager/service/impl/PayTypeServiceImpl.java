@@ -3,9 +3,11 @@ package com.haiyu.manager.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.haiyu.manager.common.utils.DateUtils;
+import com.haiyu.manager.common.utils.DigestUtils;
 import com.haiyu.manager.dao.SettingsPayTypeMapper;
 import com.haiyu.manager.dto.PayTypeDTO;
 import com.haiyu.manager.dto.PayTypeSearchDTO;
+import com.haiyu.manager.pojo.BaseAdminUser;
 import com.haiyu.manager.pojo.SettingsPayType;
 import com.haiyu.manager.response.PageDataResult;
 import com.haiyu.manager.service.PayTypeService;
@@ -54,13 +56,24 @@ public class PayTypeServiceImpl implements PayTypeService {
     public Map<String, Object> addPayType(SettingsPayType pojo) {
         Map<String, Object> data = new HashMap();
         try {
+
             SettingsPayType old = settingsPayTypeMapper.findByPayTypeName(pojo.getTypeName());
+            if (old == null) {
+                SettingsPayType search = new SettingsPayType();
+                search.setTypeCode(pojo.getTypeCode());
+                List<SettingsPayType> list = settingsPayTypeMapper.select(search);
+                if (list != null && list.size() > 0) {
+                    old = list.get(0);
+                }
+
+            }
             if (old != null) {
                 data.put("code", 0);
                 data.put("msg", "该支付方式已存在！");
-                logger.error("用户[新增]，结果=该支付方式已存在！");
+                logger.error("支付方式[新增]，结果=该支付方式已存在！");
                 return data;
             }
+
 
             pojo.setCreatedTime(DateUtils.getCurrentDate());
             pojo.setTypeStatus(1);
@@ -76,11 +89,76 @@ public class PayTypeServiceImpl implements PayTypeService {
             logger.info("支付方式[新增]，结果=新增成功！");
         } catch (Exception e) {
             e.printStackTrace();
+            data.put("msg", "支付方式[新增]异常！");
             logger.error("支付方式[新增]异常！", e);
             return data;
         }
         return data;
     }
 
+    @Override
+    public Map<String, Object> updatePayType(SettingsPayType pojo) {
+        Map<String, Object> data = new HashMap();
+        Integer id = pojo.getId();
+        SettingsPayType old = settingsPayTypeMapper.selectByPrimaryKey(id);
+        if (pojo.getTypeName().equals(old.getTypeName())) {
+            data.put("code", 0);
+            data.put("msg", "支付方式已存在！");
+            logger.error("支付方式[更新]，结果=支付方式已存在！");
+            return data;
+        }
 
+        pojo.setUpdatedTime(DateUtils.getCurrentDate());
+        int rows = settingsPayTypeMapper.updatePayType(pojo);
+        if (rows == 0) {
+            data.put("code", 0);
+            data.put("msg", "更新失败！");
+            logger.error("支付方式[更新]，结果=更新失败！");
+            return data;
+        }
+        data.put("code", 1);
+        data.put("msg", "更新成功！");
+        logger.info("支付方式[更新]，结果=更新成功！");
+        return data;
+    }
+
+    @Override
+    public Map<String, Object> delPayType(Integer id, Integer status) {
+        Map<String, Object> data = new HashMap<>();
+        try {
+            // 删除支付方式
+            int result = settingsPayTypeMapper.updatePayTypeStatus(id, status);
+            if (result == 0) {
+                data.put("code", 0);
+                data.put("msg", "删除支付方式失败");
+                logger.error("删除支付方式失败");
+                return data;
+            }
+            data.put("code", 1);
+            data.put("msg", "删除支付方式成功");
+            logger.info("删除支付方式成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("删除支付方式异常！", e);
+        }
+        return data;
+    }
+
+    @Override
+    public Map<String, Object> recoverPayType(Integer id, Integer status) {
+        Map<String, Object> data = new HashMap<>();
+        try {
+            int result = settingsPayTypeMapper.updatePayTypeStatus(id, status);
+            if (result == 0) {
+                data.put("code", 0);
+                data.put("msg", "恢复支付方式失败");
+            }
+            data.put("code", 1);
+            data.put("msg", "恢复支付方式成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("恢复支付方式异常！", e);
+        }
+        return data;
+    }
 }

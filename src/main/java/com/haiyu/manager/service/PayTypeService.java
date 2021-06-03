@@ -20,4 +20,10 @@ public interface PayTypeService {
 
     Map<String, Object> addPayType(SettingsPayType pojo);
 
+    Map<String, Object> updatePayType(SettingsPayType pojo);
+
+    Map<String, Object> delPayType(Integer id, Integer status);
+
+    Map<String, Object> recoverPayType(Integer id, Integer status);
+
 }
