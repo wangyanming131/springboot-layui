@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.SettingsPortMapper">
+    <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.SettingsPort">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="value" jdbcType="INTEGER" property="value"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="link" jdbcType="VARCHAR" property="link"/>
+        <result column="starting_type" jdbcType="INTEGER" property="starting_type"/>
+        <result column="created_time" jdbcType="VARCHAR" property="createdTime"/>
+        <result column="updated_time" jdbcType="VARCHAR" property="updatedTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+
+    <sql id="baseColumn">
+    id, value, description, link, starting_type,
+      CASE
+        starting_type
+        WHEN 1 THEN '手动'
+		WHEN 2 THEN '随机启动'
+		ELSE ''
+	  END AS typeName,
+	created_time, updated_time, status
+    </sql>
+
+    <select id="findByValue" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM settings_port
+        WHERE value = #{value}
+    </select>
+
+    <select id="getPortList" resultType="com.haiyu.manager.vo.PortVO">
+        SELECT id, value, description, link, starting_type,
+        CASE starting_type
+        WHEN 1 THEN '手动'
+        WHEN 2 THEN '随机启动'
+        ELSE ''
+        END AS typeName,
+        created_time AS createdTime,
+        updated_time AS updatedTime, status AS status
+        FROM settings_port as u
+        <where>
+            <if test="value != null and value != '' ">
+                and value = #{value}
+            </if>
+            <if test="description != null and description != '' ">
+                and description LIKE concat ('%', #{description},'%')
+            </if>
+            <if test="link != null and link != '' ">
+                and link LIKE concat ('%', #{link},'%')
+            </if>
+            <if test="starting_type != null and starting_type != '' ">
+                and starting_type = #{starting_type}
+            </if>
+            <if test="status != null and status != '' ">
+                and status = #{status}
+            </if>
+            <if test="startTime != null and startTime != '' ">
+                and created_time &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                and created_time &lt; #{endTime}
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updatePort">
+        UPDATE settings_port set
+            value = #{value},
+            description = #{description},
+            link = #{link},
+            starting_type = #{starting_type},
+            updated_time = #{updatedTime}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updatePortStatus">
+    UPDATE settings_port
+    SET status = #{status}
+    WHERE id = #{id}
+  </update>
+
+</mapper>

@@ -21,7 +21,7 @@ public class FormFilter extends FormAuthenticationFilter {
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         Subject subject = getSubject(request, response);
 
-        // 如果 isAuthenticated 为 false 证明不是登录过的，同时 isRememberd 为true
+        // 如果 isAuthenticated 为 false 证明不是登录过的，同时 isRemembered 为true
         // 证明是没登陆直接通过记住我功能进来的
         if (!subject.isAuthenticated() && subject.isRemembered()) {
 
@@ -31,7 +31,7 @@ public class FormFilter extends FormAuthenticationFilter {
             // 查看session属性当前是否是空的
             if (session.getAttribute("userName") == null) {
                 // 如果是空的才初始化
-                BaseAdminUser user = (BaseAdminUser)subject.getPrincipal();
+                BaseAdminUser user = (BaseAdminUser) subject.getPrincipal();
                 //存入用户数据
                 session.setAttribute("userName", user.getSysUserName());
             }

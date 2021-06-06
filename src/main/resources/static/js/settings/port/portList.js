@@ -1,5 +1,5 @@
 /**
- * 用户管理
+ * 端口号管理
  */
 var pageCurr;
 var form;
@@ -9,8 +9,8 @@ $(function () {
         form = layui.form;
 
         tableIns = table.render({
-            elem: '#uesrList',
-            url: '/user/getUserList',
+            elem: '#portList',
+            url: '/settings/port/getPortList',
             method: 'post', //默认：get请求
             cellMinWidth: 80,
             page: true,
@@ -26,11 +26,13 @@ $(function () {
             },
             cols: [[
                 {type: 'numbers'}
-                , {field: 'sysUserName', title: '用户名', align: 'center'}
-                , {field: 'roleName', title: '角色类型', align: 'center'}
-                , {field: 'userPhone', title: '手机号', align: 'center'}
-                , {field: 'regTime', title: '注册时间', align: 'center'}
-                , {field: 'userStatus', title: '是否有效', align: 'center'}
+                , {field: 'value', title: '端口号值', align: 'center'}
+                , {field: 'description', title: '应用描述', align: 'center'}
+                , {field: 'link', title: '链接地址', align: 'center'}
+                , {field: 'typeName', title: '启动方式', align: 'center'}
+                , {field: 'createdTime', title: '创建时间', align: 'center'}
+                , {field: 'updatedTime', title: '修改时间', align: 'center'}
+                , {field: 'status', title: '是否有效', align: 'center'}
                 , {title: '操作', align: 'center', toolbar: '#optBar'}
             ]],
             done: function (res, curr, count) {
@@ -39,7 +41,8 @@ $(function () {
                 //console.log(res);
                 //得到当前页码
                 console.log(curr);
-                $("[data-field='userStatus']").children().each(function () {
+
+                $("[data-field='status']").children().each(function () {
                     if ($(this).text() == '1') {
                         $(this).text("有效")
                     } else if ($(this).text() == '0') {
@@ -53,22 +56,22 @@ $(function () {
         });
 
         //监听工具条
-        table.on('tool(userTable)', function (obj) {
+        table.on('tool(portTable)', function (obj) {
             var data = obj.data;
             if (obj.event === 'del') {
                 //删除
-                delUser(data, data.id, data.sysUserName);
+                delPort(data, data.id, data.value);
             } else if (obj.event === 'edit') {
                 //编辑
-                openUser(data, "编辑");
+                openPort(data, "编辑");
             } else if (obj.event === 'recover') {
                 //恢复
-                recoverUser(data, data.id);
+                recoverPort(data, data.id);
             }
         });
 
         //监听提交
-        form.on('submit(userSubmit)', function (data) {
+        form.on('submit(portSubmit)', function (data) {
             // TODO 校验
             formSubmit(data);
             return false;
@@ -96,12 +99,12 @@ $(function () {
     });
 });
 
-//提交表单
+// 提交表单
 function formSubmit(obj) {
     $.ajax({
         type: "POST",
-        data: $("#userForm").serialize(),
-        url: "/user/setUser",
+        data: $("#portForm").serialize(),
+        url: "/settings/port/setPort",
         success: function (data) {
             if (data.code == 1) {
                 layer.alert(data.msg, function () {
@@ -122,43 +125,39 @@ function formSubmit(obj) {
     });
 }
 
-//开通用户
-function addUser() {
-    openUser(null, "开通用户");
+//新增端口号
+function addPort() {
+    openPort(null, "新增端口号");
 }
 
-function openUser(data, title) {
-    var roleId = null;
+function openPort(data, title) {
     if (data == null || data == "") {
         $("#id").val("");
+
     } else {
         $("#id").val(data.id);
-        $("#username").val(data.sysUserName);
-        $("#mobile").val(data.userPhone);
-        roleId = data.roleId;
+        $("#value").val(data.value);
+        $("#description").val(data.description);
+        $("#link").val(data.link);
+        // 需要先赋值后加载下拉框控件
+
     }
+    var list = [];
+    var obj0 = {};
+    obj0.value = "";
+    obj0.text = "请选择";
+    list.push(obj0);
+    var obj = {};
+    obj.value = "1";
+    obj.text = "手动";
+    list.push(obj);
+    var obj2 = {};
+    obj2.value = "2";
+    obj2.text = "随机启动";
+    list.push(obj2)
+    setStartingType(form, list, data == null ? "" : data.starting_type, "starting_type");
     var pageNum = $(".layui-laypage-skip").find("input").val();
     $("#pageNum").val(pageNum);
-    $.ajax({
-        url: '/role/getRoles',
-        dataType: 'json',
-        async: true,
-        success: function (data) {
-            $.each(data, function (index, item) {
-                if (!roleId) {
-                    var option = new Option(item.roleName, item.id);
-                } else {
-                    var option = new Option(item.roleName, item.id);
-                    // // 如果是之前的parentId则设置选中
-                    if (item.id == roleId) {
-                        option.setAttribute("selected", 'true');
-                    }
-                }
-                $('#roleId').append(option);//往下拉菜单里添加元素
-                form.render('select'); //这个很重要
-            })
-        }
-    });
 
     layer.open({
         type: 1,
@@ -167,46 +166,41 @@ function openUser(data, title) {
         resize: false,
         shadeClose: true,
         area: ['550px'],
-        content: $('#setUser'),
+        content: $('#setPort'),
         end: function () {
-            cleanUser();
+            cleanPort();
         }
     });
 }
 
-function delUser(obj, id, name) {
-    var currentUser = $("#currentUser").html();
-    if (null != id) {
-        if (currentUser == id) {
-            layer.alert("对不起，您不能执行删除自己的操作！");
-        } else {
-            layer.confirm('您确定要删除' + name + '用户吗？', {
-                btn: ['确认', '返回'] //按钮
-            }, function () {
-                $.post("/user/updateUserStatus", {"id": id, "status": 0}, function (data) {
-                    if (data.code == 1) {
-                        layer.alert(data.msg, function () {
-                            layer.closeAll();
-                            load(obj);
-                        });
-                    } else {
-                        layer.alert(data.msg);
-                    }
+function delPort(obj, id, name) {
+
+    layer.confirm('您确定要删除' + name + '端口号吗？', {
+        btn: ['确认', '返回'] //按钮
+    }, function () {
+        $.post("/settings/port/updatePortStatus", {"id": id, "status": 0}, function (data) {
+            if (data.code == 1) {
+                layer.alert(data.msg, function () {
+                    layer.closeAll();
+                    load(obj);
                 });
-            }, function () {
-                layer.closeAll();
-            });
-        }
-    }
+            } else {
+                layer.alert(data.msg);
+            }
+        });
+    }, function () {
+        layer.closeAll();
+    });
+
 }
 
 //恢复
-function recoverUser(obj, id) {
+function recoverPort(obj, id) {
     if (null != id) {
         layer.confirm('您确定要恢复吗？', {
             btn: ['确认', '返回'] //按钮
         }, function () {
-            $.post("/user/updateUserStatus", {"id": id, "status": 1}, function (data) {
+            $.post("/settings/port/updatePortStatus", {"id": id, "status": 1}, function (data) {
                 if (data.code == 1) {
                     layer.alert(data.msg, function () {
                         layer.closeAll();
@@ -222,7 +216,17 @@ function recoverUser(obj, id) {
     }
 }
 
+/**
+ * 加载列表,走后台请求,获取结果展示表格
+ * @param obj 筛选条件参数
+ */
 function load(obj) {
+    // 查询条件参数有问题
+    var params = {};
+    params.value = $("#valueSearch").val();
+    params.startTime = $("#startTime").val();
+    params.endTime = $("#endTime").val();
+    obj.field = params;
     //重新加载table
     tableIns.reload({
         where: obj.field
@@ -232,10 +236,34 @@ function load(obj) {
     });
 }
 
-function cleanUser() {
-    $("#username").val("");
-    $("#mobile").val("");
-    $("#password").val("");
-    // 清空动态下拉框元素
-    $('#roleId').html("");
+/**
+ * 清空新增/编辑页面域值
+ */
+function cleanPort() {
+    $("#id").val("");
+    $("#value").val("");
+    $("#description").val("");
+    $("#link").val("");
+    // 下拉框清空option
+    $("#starting_type").html("");
+}
+
+/**
+ * 加载下拉框控件
+ */
+function setStartingType(form, data, selectedValue, elementId) {
+    $.each(data, function (index, item) {
+        var option = new Option(item.text, item.value);
+        if (selectedValue != null) {
+            // 如果是之前的parentId则设置选中
+            if (item.value == selectedValue) {
+                option.setAttribute("selected", 'true');
+            }
+        }
+        //往下拉菜单里添加元素
+        $('#' + elementId).append(option);
+        //这个很重要
+        form.render('select');
+    })
+
 }

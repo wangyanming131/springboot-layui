@@ -30,13 +30,13 @@ public class PayTypeController {
 
 
     /**
-     * 跳转到角色管理
+     * 跳转到支付方式管理
      *
      * @return
      */
     @RequestMapping("/payTypeManage")
     public String toPage() {
-        logger.info("进入角色管理");
+        logger.info("进入支付方式管理");
         return "/settings/payType/payTypeManage";
     }
 
