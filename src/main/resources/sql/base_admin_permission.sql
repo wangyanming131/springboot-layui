@@ -46,6 +46,5 @@ INSERT INTO `base_admin_permission` VALUES (11, '服务类型管理', 9, '服务
 INSERT INTO `base_admin_permission` VALUES (12, '支付方式', 9, '支付方式', '/settings/payType/payTypeManage', '2018-12-04 11:48:44', '2021-06-01 16:30:19', 1);
 INSERT INTO `base_admin_permission` VALUES (13, '银行管理', 9, '银行管理', '/bank/bankManage', '2018-12-04 11:49:13', '2018-12-04 11:49:13', 1);
 INSERT INTO `base_admin_permission` VALUES (14, '省市区管理', 9, '省市区管理', '/position/positionManage', '2018-12-04 11:49:36', '2018-12-04 11:50:02', 1);
-INSERT INTO `base_admin_permission` VALUES (15, '数据字典', 0, '用于开发测试系统等功能', '', '2021-06-01 14:44:09', '2021-06-01 14:54:41', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
