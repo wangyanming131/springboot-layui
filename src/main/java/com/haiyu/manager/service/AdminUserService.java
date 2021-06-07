@@ -1,7 +1,7 @@
 package com.haiyu.manager.service;
 
 import com.haiyu.manager.pojo.BaseAdminUser;
-import com.haiyu.manager.dto.UserSearchDTO;
+import com.haiyu.manager.query.UserQuery;
 import com.haiyu.manager.response.PageDataResult;
 
 import java.util.Map;
@@ -16,19 +16,19 @@ import java.util.Map;
  */
 public interface AdminUserService {
 
-    PageDataResult getUserList(UserSearchDTO userSearch, Integer pageNum, Integer pageSize);
+    PageDataResult getUserList(UserQuery query, Integer pageNum, Integer pageSize);
 
-    Map<String,Object> addUser(BaseAdminUser user);
+    Map<String, Object> addUser(BaseAdminUser user);
 
-    Map<String,Object> updateUser(BaseAdminUser user);
+    Map<String, Object> updateUser(BaseAdminUser user);
 
     BaseAdminUser getUserById(Integer id);
 
     BaseAdminUser findByUserName(String userName);
 
-    int updatePwd(String userName,String password);
+    int updatePwd(String userName, String password);
 
-    Map<String, Object> delUser(Integer id,Integer status);
+    Map<String, Object> delUser(Integer id, Integer status);
 
-    Map<String, Object> recoverUser(Integer id,Integer status);
+    Map<String, Object> recoverUser(Integer id, Integer status);
 }

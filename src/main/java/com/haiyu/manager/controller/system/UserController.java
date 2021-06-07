@@ -1,8 +1,8 @@
 package com.haiyu.manager.controller.system;
 
 import com.haiyu.manager.dto.LoginDTO;
-import com.haiyu.manager.dto.UserSearchDTO;
 import com.haiyu.manager.pojo.BaseAdminUser;
+import com.haiyu.manager.query.UserQuery;
 import com.haiyu.manager.response.PageDataResult;
 import com.haiyu.manager.service.AdminUserService;
 import org.apache.shiro.SecurityUtils;
@@ -159,7 +159,7 @@ public class UserController {
     @RequestMapping(value = "/getUserList", method = RequestMethod.POST)
     @ResponseBody
     public PageDataResult getUserList(@RequestParam("pageNum") Integer pageNum,
-                                      @RequestParam("pageSize") Integer pageSize,/*@Valid PageRequest page,*/ UserSearchDTO userSearch) {
+                                      @RequestParam("pageSize") Integer pageSize,/*@Valid PageRequest page,*/ UserQuery query) {
         /*logger.info("分页查询用户列表！搜索条件：userSearch：" + userSearch + ",pageNum:" + page.getPageNum()
                 + ",每页记录数量pageSize:" + page.getPageSize());*/
         PageDataResult pdr = new PageDataResult();
@@ -171,7 +171,7 @@ public class UserController {
                 pageSize = 10;
             }
             // 获取用户列表
-            pdr = adminUserService.getUserList(userSearch, pageNum, pageSize);
+            pdr = adminUserService.getUserList(query, pageNum, pageSize);
             logger.info("用户列表查询=pdr:" + pdr);
 
         } catch (Exception e) {
