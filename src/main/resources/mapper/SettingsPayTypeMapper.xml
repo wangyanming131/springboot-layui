@@ -44,6 +44,7 @@
                 and created_time &lt; #{endTime}
             </if>
         </where>
+        order by type_code asc
     </select>
 
 

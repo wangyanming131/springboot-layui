@@ -1,16 +1,16 @@
-package com.haiyu.manager.dto;
+package com.haiyu.manager.vo;
 
-;import lombok.Data;
+import lombok.Data;
 
 /**
- * @Title: AdminUserDTO
+ * @Title: UserVO
  * @Description:
  * @author: ChenXue
  * @version: 1.0
  * @date: 2018/12/3 12:13
  */
 @Data
-public class AdminUserDTO {
+public class UserVO {
 
     private Integer id;
 
@@ -29,5 +29,6 @@ public class AdminUserDTO {
 
 
     private Integer userStatus;
+
 
 }

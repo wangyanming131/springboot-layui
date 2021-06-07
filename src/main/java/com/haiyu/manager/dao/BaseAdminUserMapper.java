@@ -1,19 +1,19 @@
 package com.haiyu.manager.dao;
 
 
-import com.haiyu.manager.dto.AdminUserDTO;
 import com.haiyu.manager.pojo.BaseAdminUser;
 import com.haiyu.manager.query.UserQuery;
-import tk.mapper.MyMapper;
+import com.haiyu.manager.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import tk.mapper.MyMapper;
 
 import java.util.List;
 
 @Repository
 public interface BaseAdminUserMapper extends MyMapper<BaseAdminUser> {
 
-    List<AdminUserDTO> getUserList(UserQuery query);
+    List<UserVO> getUserList(UserQuery query);
 
     BaseAdminUser getUserByUserName(@Param("sysUserName") String sysUserName, @Param("id") Integer id);
 

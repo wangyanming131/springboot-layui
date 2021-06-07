@@ -1,8 +1,8 @@
 package com.haiyu.manager.dao;
 
 
-import com.haiyu.manager.dto.PermissionDTO;
 import com.haiyu.manager.pojo.BaseAdminPermission;
+import com.haiyu.manager.vo.PermissionVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import tk.mapper.MyMapper;
@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface BaseAdminPermissionMapper extends MyMapper<BaseAdminPermission> {
-    List<PermissionDTO> getPermissionList();
+    List<PermissionVO> getPermissionList();
 
-    List<PermissionDTO> parentPermissionList();
+    List<PermissionVO> parentPermissionList();
 
     int updatePermission(BaseAdminPermission permission);
 
-    List<PermissionDTO> getPermissionListByPId(@Param("pid") Integer pid);
+    List<PermissionVO> getPermissionListByPId(@Param("pid") Integer pid);
 }

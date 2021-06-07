@@ -1,9 +1,9 @@
 package com.haiyu.manager.service;
 
-import com.haiyu.manager.dto.PermissionDTO;
+import com.haiyu.manager.pojo.BaseAdminPermission;
 import com.haiyu.manager.pojo.BaseAdminUser;
 import com.haiyu.manager.response.PageDataResult;
-import com.haiyu.manager.pojo.BaseAdminPermission;
+import com.haiyu.manager.vo.PermissionVO;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,6 @@ import java.util.Map;
 public interface AdminPermissionService {
 
     /**
-     *
      * 功能描述: 添加权限
      *
      * @param:
@@ -26,10 +25,9 @@ public interface AdminPermissionService {
      * @auther: ChenXue
      * @date: 2018/11/30 9:48
      */
-    Map<String,Object> addPermission(BaseAdminPermission permission);
+    Map<String, Object> addPermission(BaseAdminPermission permission);
 
     /**
-     *
      * 功能描述: 修改权限
      *
      * @param:
@@ -37,10 +35,9 @@ public interface AdminPermissionService {
      * @auther: ChenXue
      * @date: 2018/11/30 9:48
      */
-    Map<String,Object> updatePermission(BaseAdminPermission permission);
+    Map<String, Object> updatePermission(BaseAdminPermission permission);
 
     /**
-     *
      * 功能描述: 获取权限菜单列表
      *
      * @param:
@@ -51,7 +48,6 @@ public interface AdminPermissionService {
     PageDataResult getPermissionList(Integer pageNum, Integer pageSize);
 
     /**
-     *
      * 功能描述: 获取根权限菜单列表
      *
      * @param:
@@ -59,10 +55,9 @@ public interface AdminPermissionService {
      * @auther: ChenXue
      * @date: 2018/11/30 11:36
      */
-    List<PermissionDTO> parentPermissionList();
+    List<PermissionVO> parentPermissionList();
 
     /**
-     *
      * 功能描述: 删除权限菜单
      *
      * @param:
@@ -73,7 +68,6 @@ public interface AdminPermissionService {
     Map<String, Object> del(long id);
 
     /**
-     *
      * 功能描述: 根据id获取权限
      *
      * @param:
@@ -85,7 +79,6 @@ public interface AdminPermissionService {
 
 
     /**
-     *
      * 功能描述: 获取当前登陆用户的权限
      *
      * @param:

@@ -1,17 +1,17 @@
-package com.haiyu.manager.dto;
+package com.haiyu.manager.vo;
 
 import lombok.Data;
 
-
 /**
- * @Title: AdminRoleDTO
+ * @Title: RoleVO
  * @Description:
  * @author: ChenXue
  * @version: 1.0
  * @date: 2018/12/3 18:51
  */
 @Data
-public class AdminRoleDTO {
+public class RoleVO {
+
     private Integer id;
 
     /**
@@ -42,7 +42,8 @@ public class AdminRoleDTO {
 
     /**
      * 1：有效
-     0：无效
+     * 0：无效
      */
     private Integer roleStatus;
+
 }

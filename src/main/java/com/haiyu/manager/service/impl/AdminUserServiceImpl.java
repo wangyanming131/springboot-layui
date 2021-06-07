@@ -5,11 +5,11 @@ import com.github.pagehelper.PageInfo;
 import com.haiyu.manager.common.utils.DateUtils;
 import com.haiyu.manager.common.utils.DigestUtils;
 import com.haiyu.manager.dao.BaseAdminUserMapper;
-import com.haiyu.manager.dto.AdminUserDTO;
 import com.haiyu.manager.pojo.BaseAdminUser;
 import com.haiyu.manager.query.UserQuery;
 import com.haiyu.manager.response.PageDataResult;
 import com.haiyu.manager.service.AdminUserService;
+import com.haiyu.manager.vo.UserVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +37,12 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Override
     public PageDataResult getUserList(UserQuery query, Integer pageNum, Integer pageSize) {
         PageDataResult pageDataResult = new PageDataResult();
-        List<AdminUserDTO> baseAdminUsers = baseAdminUserMapper.getUserList(query);
+        List<UserVO> baseAdminUsers = baseAdminUserMapper.getUserList(query);
 
         PageHelper.startPage(pageNum, pageSize);
 
         if (baseAdminUsers.size() != 0) {
-            PageInfo<AdminUserDTO> pageInfo = new PageInfo<>(baseAdminUsers);
+            PageInfo<UserVO> pageInfo = new PageInfo<>(baseAdminUsers);
             pageDataResult.setList(baseAdminUsers);
             pageDataResult.setTotals((int) pageInfo.getTotal());
         }

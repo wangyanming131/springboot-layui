@@ -1,19 +1,19 @@
-package com.haiyu.manager.dto;
-
+package com.haiyu.manager.vo;
 
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * @Title: PermissionDTO
+ * @Title: PermissionVO
  * @Description:
  * @author: ChenXue
  * @version: 1.0
  * @date: 2018/11/30 11:22
  */
 @Data
-public class PermissionDTO {
+public class PermissionVO {
+
     private Integer id;
 
     private String name;
@@ -32,5 +32,6 @@ public class PermissionDTO {
 
     private Integer delFlag;
 
-    List<PermissionDTO> childrens;
+    List<PermissionVO> childrens;
+
 }
