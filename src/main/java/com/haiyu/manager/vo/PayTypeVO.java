@@ -1,4 +1,4 @@
-package com.haiyu.manager.dto;
+package com.haiyu.manager.vo;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import lombok.Data;
  * @date: 2021-6-2 16:41:28
  */
 @Data
-public class PayTypeDTO {
+public class PayTypeVO {
 
     private Integer id;
 

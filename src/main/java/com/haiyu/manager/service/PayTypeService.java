@@ -1,7 +1,7 @@
 package com.haiyu.manager.service;
 
-import com.haiyu.manager.dto.PayTypeSearchDTO;
 import com.haiyu.manager.pojo.SettingsPayType;
+import com.haiyu.manager.query.PayTypeQuery;
 import com.haiyu.manager.response.PageDataResult;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public interface PayTypeService {
 
-    PageDataResult getPayTypeList(PayTypeSearchDTO payTypeSearchDTO, Integer pageNum, Integer pageSize);
+    PageDataResult getPayTypeList(PayTypeQuery query, Integer pageNum, Integer pageSize);
 
     Map<String, Object> addPayType(SettingsPayType pojo);
 

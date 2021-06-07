@@ -3,14 +3,12 @@ package com.haiyu.manager.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.haiyu.manager.common.utils.DateUtils;
-import com.haiyu.manager.common.utils.DigestUtils;
 import com.haiyu.manager.dao.SettingsPayTypeMapper;
-import com.haiyu.manager.dto.PayTypeDTO;
-import com.haiyu.manager.dto.PayTypeSearchDTO;
-import com.haiyu.manager.pojo.BaseAdminUser;
 import com.haiyu.manager.pojo.SettingsPayType;
+import com.haiyu.manager.query.PayTypeQuery;
 import com.haiyu.manager.response.PageDataResult;
 import com.haiyu.manager.service.PayTypeService;
+import com.haiyu.manager.vo.PayTypeVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +34,14 @@ public class PayTypeServiceImpl implements PayTypeService {
     private SettingsPayTypeMapper settingsPayTypeMapper;
 
     @Override
-    public PageDataResult getPayTypeList(PayTypeSearchDTO userSearch, Integer pageNum, Integer pageSize) {
+    public PageDataResult getPayTypeList(PayTypeQuery query, Integer pageNum, Integer pageSize) {
         PageDataResult pageDataResult = new PageDataResult();
-        List<PayTypeDTO> payTypes = settingsPayTypeMapper.getPayTypeList(userSearch);
+        List<PayTypeVO> payTypes = settingsPayTypeMapper.getPayTypeList(query);
 
         PageHelper.startPage(pageNum, pageSize);
 
         if (payTypes.size() != 0) {
-            PageInfo<PayTypeDTO> pageInfo = new PageInfo<>(payTypes);
+            PageInfo<PayTypeVO> pageInfo = new PageInfo<>(payTypes);
             pageDataResult.setList(payTypes);
             pageDataResult.setTotals((int) pageInfo.getTotal());
         }

@@ -1,7 +1,7 @@
 package com.haiyu.manager.controller.settings;
 
-import com.haiyu.manager.dto.PayTypeSearchDTO;
 import com.haiyu.manager.pojo.SettingsPayType;
+import com.haiyu.manager.query.PayTypeQuery;
 import com.haiyu.manager.response.PageDataResult;
 import com.haiyu.manager.service.PayTypeService;
 import org.slf4j.Logger;
@@ -51,7 +51,7 @@ public class PayTypeController {
     @RequestMapping(value = "/getPayTypeList", method = RequestMethod.POST)
     @ResponseBody
     public PageDataResult getPayTypeList(@RequestParam("pageNum") Integer pageNum,
-                                         @RequestParam("pageSize") Integer pageSize,/*@Valid PageRequest page,*/ PayTypeSearchDTO payTypeSearchDTO) {
+                                         @RequestParam("pageSize") Integer pageSize,/*@Valid PageRequest page,*/ PayTypeQuery query) {
         /*logger.info("分页查询支付方式列表！搜索条件：payTypeSearch：" + payTypeSearch + ",pageNum:" + page.getPageNum()
                 + ",每页记录数量pageSize:" + page.getPageSize());*/
         logger.info("url:/settings/payType/getPayTypeList");
@@ -64,7 +64,7 @@ public class PayTypeController {
                 pageSize = 10;
             }
             // 获取支付方式列表
-            pdr = payTypeService.getPayTypeList(payTypeSearchDTO, pageNum, pageSize);
+            pdr = payTypeService.getPayTypeList(query, pageNum, pageSize);
             logger.info("支付方式列表查询=pdr:" + pdr);
 
         } catch (Exception e) {

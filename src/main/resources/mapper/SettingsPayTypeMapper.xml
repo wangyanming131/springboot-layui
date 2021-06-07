@@ -26,7 +26,7 @@
         and type_status = 1
     </select>
 
-    <select id="getPayTypeList" resultType="com.haiyu.manager.dto.PayTypeDTO">
+    <select id="getPayTypeList" resultType="com.haiyu.manager.vo.PayTypeVO">
         SELECT id, type_code AS typeCode, type_name AS typeName, created_time AS createdTime,
         updated_time AS updatedTime, type_status AS typeStatus
         FROM settings_pay_type as u
