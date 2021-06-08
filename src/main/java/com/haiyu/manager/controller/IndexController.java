@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @Title: LoginController
+ * @Title: IndexController
  * @Description:
  * @author: ChenXue
  * @version: 1.0

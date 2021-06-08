@@ -33,7 +33,7 @@ import java.util.Map;
  * @date: 2018/11/20 15:17
  */
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -145,7 +145,7 @@ public class UserController {
      */
     @RequestMapping("/userManage")
     public String userManage() {
-        return "/user/userManage";
+        return "/base/user/userManage";
     }
 
     /**

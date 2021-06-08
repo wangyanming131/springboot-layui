@@ -38,6 +38,5 @@ CREATE TABLE `base_admin_user`  (
 INSERT INTO `base_admin_user` VALUES (1, 'admin', '3ef7164d1f6167cb9f2658c07d3c2f0a', 1, '13411182215', '2018-11-22 10:57:33', 1);
 INSERT INTO `base_admin_user` VALUES (2, 'jackson', '6565673a6caee66a6acbd51415bddbda', 2, '19563648695', '2018-11-22 10:57:33', 1);
 INSERT INTO `base_admin_user` VALUES (4, 'alice', '5e1030d25f5ca46aac4c0369b908d762', 2, '11111111111', '2018-11-22 11:01:58', 1);
-INSERT INTO `base_admin_user` VALUES (5, 'chenxue', '2bce5124b94259e3ae825882eab0572d', 3, '18500521059', '2021-06-01 14:37:51', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
