@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/06/2021 21:19:13
+ Date: 08/06/2021 15:57:38
 */
 
 SET NAMES utf8mb4;
@@ -35,8 +35,7 @@ CREATE TABLE `base_admin_role`  (
 -- ----------------------------
 -- Records of base_admin_role
 -- ----------------------------
-INSERT INTO `base_admin_role` VALUES (1, '系统管理员', '系统管理员', '1,9,15', '2018-11-21 15:54:07', '2021-06-01 14:52:49', 1);
+INSERT INTO `base_admin_role` VALUES (1, '系统管理员', '系统管理员', '1,9', '2018-11-21 15:54:07', '2021-06-01 14:52:49', 1);
 INSERT INTO `base_admin_role` VALUES (2, '普通管理员', '普通管理员', '9', '2018-11-21 15:11:44', '2018-12-03 19:09:57', 1);
-INSERT INTO `base_admin_role` VALUES (3, '开发管理员', '负责开发模块开发测试等', '15', '2021-06-01 14:51:15', '2021-06-01 14:51:15', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

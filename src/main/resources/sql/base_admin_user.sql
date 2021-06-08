@@ -1,4 +1,4 @@
-\/*
+/*
  Navicat Premium Data Transfer
 
  Source Server         : mysql-5.7.21
@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/06/2021 21:19:19
+ Date: 08/06/2021 15:57:47
 */
 
 SET NAMES utf8mb4;

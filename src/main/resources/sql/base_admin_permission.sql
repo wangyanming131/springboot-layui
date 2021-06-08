@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/06/2021 21:19:03
+ Date: 08/06/2021 15:57:31
 */
 
 SET NAMES utf8mb4;
@@ -41,9 +41,8 @@ INSERT INTO `base_admin_permission` VALUES (2, '账号管理', 1, '账号管理'
 INSERT INTO `base_admin_permission` VALUES (3, '角色管理', 1, '角色管理', '/role/roleManage', '2018-11-30 11:45:27', '2018-11-30 11:45:27', 1);
 INSERT INTO `base_admin_permission` VALUES (7, '权限管理', 1, '权限管理', '/permission/permissionManage', '2018-11-30 11:48:35', '2018-11-30 15:13:38', 1);
 INSERT INTO `base_admin_permission` VALUES (9, '基本设置', 0, '基本设置', '', '2018-11-30 12:10:32', '2018-11-30 12:10:32', 1);
-INSERT INTO `base_admin_permission` VALUES (10, '端口号管理', 9, '服务类目管理', '/settings/port/portManage', '2018-12-04 11:47:07', '2021-06-04 15:37:52', 1);
-INSERT INTO `base_admin_permission` VALUES (11, '服务类型管理', 9, '服务类型管理', '/serviceType/serviceTypeManage', '2018-12-04 11:47:59', '2018-12-04 11:47:59', 1);
-INSERT INTO `base_admin_permission` VALUES (12, '支付方式', 9, '支付方式', '/settings/payType/payTypeManage', '2018-12-04 11:48:44', '2021-06-01 16:30:19', 1);
+INSERT INTO `base_admin_permission` VALUES (10, '端口号管理', 9, '端口号管理', '/settings/port/portManage', '2018-12-04 11:47:07', '2021-06-08 11:12:05', 1);
+INSERT INTO `base_admin_permission` VALUES (11, '字典类型管理', 9, '字典类型管理', '/settings/dicType/dicTypeManage', '2018-12-04 11:47:59', '2021-06-08 11:13:28', 1);
 INSERT INTO `base_admin_permission` VALUES (13, '银行管理', 9, '银行管理', '/bank/bankManage', '2018-12-04 11:49:13', '2018-12-04 11:49:13', 1);
 INSERT INTO `base_admin_permission` VALUES (14, '省市区管理', 9, '省市区管理', '/position/positionManage', '2018-12-04 11:49:36', '2018-12-04 11:50:02', 1);
 

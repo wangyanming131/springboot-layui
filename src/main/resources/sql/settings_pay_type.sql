@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 03/06/2021 17:33:22
+ Date: 08/06/2021 15:58:01
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `settings_pay_type`  (
 -- ----------------------------
 INSERT INTO `settings_pay_type` VALUES (6, '02', '微信', '2021-06-03 15:55:11', NULL, 1);
 INSERT INTO `settings_pay_type` VALUES (7, '03', '银行卡', '2021-06-03 16:01:51', NULL, 1);
-INSERT INTO `settings_pay_type` VALUES (8, '01', '支付宝2', '2021-06-03 16:06:01', '2021-06-03 17:02:43', 1);
+INSERT INTO `settings_pay_type` VALUES (8, '01', '支付宝2', '2021-06-03 16:06:01', '2021-06-08 15:32:18', 1);
 INSERT INTO `settings_pay_type` VALUES (11, '04', '花钱吧', '2021-06-03 16:43:31', '2021-06-03 17:02:32', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

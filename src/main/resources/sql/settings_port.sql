@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/06/2021 21:19:34
+ Date: 08/06/2021 15:58:07
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,6 @@ CREATE TABLE `settings_port`  (
 -- Records of settings_port
 -- ----------------------------
 INSERT INTO `settings_port` VALUES (5, 3306, 'mysql-5.7-21', 'http', 1, '2021-06-06 08:30:20', '2021-06-06 21:05:42', 1);
-INSERT INTO `settings_port` VALUES (6, 3308, 'mysql-8.0.11', '', 2, '2021-06-06 20:58:32', '2021-06-06 21:16:16', 1);
+INSERT INTO `settings_port` VALUES (6, 3308, 'mysql-8.0.11', '', 2, '2021-06-06 20:58:32', '2021-06-08 15:10:11', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
