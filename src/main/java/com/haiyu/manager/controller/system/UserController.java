@@ -145,7 +145,7 @@ public class UserController {
      */
     @RequestMapping("/userManage")
     public String userManage() {
-        return "/base/user/userManage";
+        return "/modules/base/user/userManage";
     }
 
     /**

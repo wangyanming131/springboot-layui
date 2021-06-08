@@ -44,7 +44,7 @@ public class PermissionController {
     @RequestMapping("permissionManage")
     public String permissionManage() {
         logger.info("进入权限管理");
-        return "/base/permission/permissionManage";
+        return "/modules/base/permission/permissionManage";
     }
 
 

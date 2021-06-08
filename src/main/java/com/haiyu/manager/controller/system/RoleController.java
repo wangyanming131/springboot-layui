@@ -36,7 +36,7 @@ public class RoleController {
     @RequestMapping("/roleManage")
     public String toPage() {
         logger.info("进入角色管理");
-        return "/base/role/roleManage";
+        return "/modules/base/role/roleManage";
     }
 
     /**

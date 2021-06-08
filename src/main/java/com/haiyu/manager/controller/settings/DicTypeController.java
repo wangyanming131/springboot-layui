@@ -37,7 +37,7 @@ public class DicTypeController {
     @RequestMapping("/dicTypeManage")
     public String toPage() {
         logger.info("进入字典类型管理");
-        return "/settings/dicType/dicTypeManage";
+        return "/modules/settings/dicType/dicTypeManage";
     }
 
     /**

@@ -37,7 +37,7 @@ public class PortController {
     @RequestMapping("/portManage")
     public String toPage() {
         logger.info("进入端口号管理");
-        return "/settings/port/portManage";
+        return "/modules/settings/port/portManage";
     }
 
     /**

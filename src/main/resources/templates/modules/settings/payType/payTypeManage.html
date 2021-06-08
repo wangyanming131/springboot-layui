@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
-<head th:include="layout :: htmlhead" th:with="title='字典类型管理'"></head>
+<head th:include="layout :: htmlhead" th:with="title='支付方式管理'"></head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <!--头-->
@@ -9,19 +9,25 @@
 
     <div class="layui-body" style="margin: 1%">
 
-        <form id="dicTypeSearch" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+        <form id="payTypeSearch" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">中文名称</label>
+                <div class="layui-input-inline">
+                    <input id="typeNameSearch" name="typeName" autocomplete="off" class="layui-input"
+                           type="text"/>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">代码</label>
+                    <label class="layui-form-label">注册时间</label>
                     <div class="layui-input-inline" style="width: 175px;">
-                        <input id="typeCodeSearch" name="typeCode" autocomplete="off" class="layui-input"
-                               type="text"/>
+                        <input name="startTime" id="startTime" placeholder="yyyy-MM-dd" autocomplete="off"
+                               class="layui-input" type="text"/>
                     </div>
-                    <div class="layui-form-mid"></div>
-                    <label class="layui-form-label">名称</label>
+                    <div class="layui-form-mid">-</div>
                     <div class="layui-input-inline" style="width: 175px;">
-                        <input id="typeNameSearch" name="typeName" autocomplete="off" class="layui-input"
-                               type="text"/>
+                        <input name="endTime" id="endTime" placeholder="yyyy-MM-dd" autocomplete="off"
+                               class="layui-input" type="text"/>
                     </div>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     <button class="layui-btn" lay-submit="" lay-filter="searchSubmit">提交</button>
@@ -32,17 +38,17 @@
         <!--<hr class="layui-bg-blue"/>-->
         <hr class="layui-bg-black"/>
 
-        <button class="layui-btn layui-btn-normal" onclick="addDicType()">新增字典类型</button>
+        <button class="layui-btn layui-btn-normal" onclick="addPayType()">新增支付方式</button>
 
-        <div style="display:none;" id="currentDicType">
+        <div style="display:none;" id="currentPayType">
             <shiro:principal property="id"></shiro:principal>
         </div>
 
-        <table id="dicTypeList" lay-filter="dicTypeTable"></table>
+        <table id="payTypeList" lay-filter="payTypeTable"></table>
 
         <script type="text/html" id="optBar">
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            {{#  if(d.status == '0'){ }}
+            {{#  if(d.typeStatus == '0'){ }}
             <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="recover">恢复</a>
             {{#  } else { }}
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -51,13 +57,13 @@
     </div>
 
 
-    <!--添加或编辑字典类型-->
-    <div id="setDicType" class="layer_self_wrap" style="width:500px;display:none;">
-        <form id="dicTypeForm" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+    <!--添加或编辑支付方式-->
+    <div id="setPayType" class="layer_self_wrap" style="width:500px;display:none;">
+        <form id="payTypeForm" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
             <input id="pageNum" type="hidden" name="pageNum"/>
             <input id="id" type="hidden" name="id"/>
             <div class="layui-form-item">
-                <label class="layui-form-label">代码</label>
+                <label class="layui-form-label">支付方式代码</label>
                 <div class="layui-input-inline">
                     <input id="typeCode" name="typeCode" lay-verify="required" autocomplete="off" class="layui-input"
                            type="text"/>
@@ -65,7 +71,7 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">显示名称</label>
                 <div class="layui-input-inline">
                     <input id="typeName" name="typeName" lay-verify="required" autocomplete="off" class="layui-input"
                            type="text"/>
@@ -74,7 +80,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block" style="margin-left: 10px;">
-                    <button class="layui-btn" lay-submit="" lay-filter="dicTypeSubmit">提交</button>
+                    <button class="layui-btn" lay-submit="" lay-filter="payTypeSubmit">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -84,7 +90,7 @@
     <!--底部-->
     <div th:replace="fragments/footer :: footer"></div>
     <script src="/js/dateUtils.js"></script>
-    <script src="/js/settings/dicType/dicTypeList.js"></script>
+    <script src="/js/modules/settings/payType/payTypeList.js"></script>
 
 </div>
 </body>

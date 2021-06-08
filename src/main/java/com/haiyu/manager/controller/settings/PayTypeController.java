@@ -37,7 +37,7 @@ public class PayTypeController {
     @RequestMapping("/payTypeManage")
     public String toPage() {
         logger.info("进入支付方式管理");
-        return "/settings/payType/payTypeManage";
+        return "/modules/settings/payType/payTypeManage";
     }
 
     /**
