@@ -1810,7 +1810,7 @@ a cite {
 }
 
 .layui-btn + .layui-btn {
-    margin-left: 30px
+    margin-left: 10px
 }
 
 .layui-btn-container {
@@ -1964,7 +1964,7 @@ a cite {
 
 .layui-input, .layui-textarea {
     display: block;
-    width: 160%;
+    width: 100%;
     padding-left: 10px
 }
 
@@ -2404,7 +2404,7 @@ a cite {
 }
 
 .layui-form-pane .layui-form-label {
-    width: 150px;
+    width: 110px;
     padding: 8px 15px;
     height: 38px;
     line-height: 20px;

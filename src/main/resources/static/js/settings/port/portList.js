@@ -97,6 +97,7 @@ $(function () {
             return false;
         });
     });
+
 });
 
 // 提交表单
@@ -142,20 +143,7 @@ function openPort(data, title) {
         // 需要先赋值后加载下拉框控件
 
     }
-    var list = [];
-    var obj0 = {};
-    obj0.value = "";
-    obj0.text = "请选择";
-    list.push(obj0);
-    var obj = {};
-    obj.value = "1";
-    obj.text = "手动";
-    list.push(obj);
-    var obj2 = {};
-    obj2.value = "2";
-    obj2.text = "随机启动";
-    list.push(obj2)
-    setStartingType(form, list, data == null ? "" : data.starting_type, "starting_type");
+    setStartingType(form, data == null ? "" : data.starting_type, "starting_type");
     var pageNum = $(".layui-laypage-skip").find("input").val();
     $("#pageNum").val(pageNum);
 
@@ -223,9 +211,10 @@ function recoverPort(obj, id) {
 function load(obj) {
     // 查询条件参数有问题
     var params = {};
-    params.value = $("#valueSearch").val();
-    params.startTime = $("#startTime").val();
-    params.endTime = $("#endTime").val();
+    params.value = $("#valueQuery").val();
+    params.description = $("#descriptionQuery").val();
+    params.starting_type = $("#starting_typeQuery").val();
+    params.status = $("#statusQuery").val();
     obj.field = params;
     //重新加载table
     tableIns.reload({
@@ -248,11 +237,40 @@ function cleanPort() {
     $("#starting_type").html("");
 }
 
+function addStartTypeOptions(id) {
+    // 下拉框清空option
+    $("#" + id).html("");
+    setStartingType(form, "", id);
+}
+
+/**
+ * 启动方式下拉框列表
+ * @returns {Array}
+ */
+function getStartTypeList() {
+    var list = [];
+    var obj0 = {};
+    obj0.value = "";
+    obj0.text = "请选择";
+    list.push(obj0);
+    var obj = {};
+    obj.value = "1";
+    obj.text = "手动";
+    list.push(obj);
+    var obj2 = {};
+    obj2.value = "2";
+    obj2.text = "随机启动";
+    list.push(obj2)
+
+    return list;
+}
+
 /**
  * 加载下拉框控件
  */
-function setStartingType(form, data, selectedValue, elementId) {
-    $.each(data, function (index, item) {
+function setStartingType(form, selectedValue, elementId) {
+    var list = getStartTypeList();
+    $.each(list, function (index, item) {
         var option = new Option(item.text, item.value);
         if (selectedValue != null) {
             // 如果是之前的parentId则设置选中
