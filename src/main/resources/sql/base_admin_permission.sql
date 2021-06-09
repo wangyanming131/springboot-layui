@@ -43,7 +43,7 @@ INSERT INTO `base_admin_permission` VALUES (7, '权限管理', 1, '权限管理'
 INSERT INTO `base_admin_permission` VALUES (9, '基本设置', 0, '基本设置', '', '2018-11-30 12:10:32', '2018-11-30 12:10:32', 1);
 INSERT INTO `base_admin_permission` VALUES (10, '端口号管理', 9, '端口号管理', '/settings/port/portManage', '2018-12-04 11:47:07', '2021-06-08 11:12:05', 1);
 INSERT INTO `base_admin_permission` VALUES (11, '字典类型管理', 9, '字典类型管理', '/settings/dicType/dicTypeManage', '2018-12-04 11:47:59', '2021-06-08 11:13:28', 1);
-INSERT INTO `base_admin_permission` VALUES (13, '银行管理', 9, '银行管理', '/bank/bankManage', '2018-12-04 11:49:13', '2018-12-04 11:49:13', 1);
+INSERT INTO `base_admin_permission` VALUES (13, '部门管理', 1, '部门管理', '/base/dept/deptManage', '2018-12-04 11:49:13', '2021-06-09 10:58:33', 1);
 INSERT INTO `base_admin_permission` VALUES (14, '省市区管理', 9, '省市区管理', '/position/positionManage', '2018-12-04 11:49:36', '2018-12-04 11:50:02', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
