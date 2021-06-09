@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `base_department`;
 CREATE TABLE `base_department`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '部门ID',
   `dept_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '部门名称',
-  `dept_id` int(11) NOT NULL COMMENT '上级部门ID',
+  `parent_id` int(11) NOT NULL COMMENT '上级部门ID',
   `order_num` int(11) NULL DEFAULT NULL COMMENT '排序',
   `created_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建时间',
   `updated_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',

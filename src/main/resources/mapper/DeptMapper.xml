@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.DeptMapper">
+    <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.BaseDept">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentID"/>
+        <result column="order_num" jdbcType="VARCHAR" property="orderNum"/>
+        <result column="created_time" jdbcType="VARCHAR" property="createdTime"/>
+        <result column="updated_time" jdbcType="VARCHAR" property="updatedTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+    id,dept_name,parent_id,order_num,created_time,status,status
+    </sql>
+
+    <update id="updateDept">
+        UPDATE base_department
+        SET
+        <if test="deptName != null">dept_name = #{deptName},</if>
+        <if test="parentID != null">parent_id = #{parentID},</if>
+        <if test="orderNum != null">order_num = #{orderNum},</if>
+        <if test="updatedTime != null">updated_time = #{updatedTime}</if>
+        where
+        <if test="id != null">id = #{id}</if>
+    </update>
+
+    <update id="updateDeptStatus">
+        UPDATE base_department
+        SET status = #{status}
+        where
+        <if test="id != null">id = #{id}</if>
+    </update>
+
+    <select id="getDeptList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM base_department
+    </select>
+
+    <select id="getDepts" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM base_department WHERE status = 1
+    </select>
+</mapper>
